@@ -23,6 +23,7 @@ def get_filters():
     # check user input for validity
     while city != 'chicago' and city != 'new york city' and city != 'washington': 
         print("Invalid input.")
+        print("Valid input: chicaco, new york city, or washington.")
         city = (input("Please enter either 'chicago', 'new york city' or 'washington': \n")).lower()
     
     # get user input for month (all, january, february, ... , june) 

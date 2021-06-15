@@ -23,6 +23,7 @@ def get_filters():
     # check user input for validity
     while city != 'chicago' and city != 'new york city' and city != 'washington': 
         print("Invalid input.")
+        print("Valid input: chicaco, new york city, or washington.")
         city = (input("Please enter either 'chicago', 'new york city' or 'washington': \n")).lower()
     
     # get user input for month (all, january, february, ... , june) 
@@ -75,19 +76,19 @@ def filter_data(raw_df,month,day):
     # Create copy of raw dataframe
     df = raw_df.copy()
     
-    # Convert Start time to datetime format
-    df['Start Time'] = pd.to_datetime(df['Start Time'])
+    # Convert start_time to datetime format
+    df['start_time'] = pd.to_datetime(df['start_time'])
     
     # Add column for Start Month
     months = {1:'January', 2:'February', 3:'March', 4:'April', 5:'May', 6:'June', 7:'July', 8:'August', 9:'September', 10:'October', 11:'November', 12:'December'}
-    df['Month'] = df['Start Time'].dt.month
+    df['Month'] = df['start_time'].dt.month
     df["Month"].replace(months, inplace=True)
     
     # Add column for Start Day
-    df['Day'] = df['Start Time'].dt.day_name()
+    df['Day'] = df['start_time'].dt.day_name()
     
     # Add column for Start Hour
-    df['Hour'] = df['Start Time'].dt.hour
+    df['Hour'] = df['start_time'].dt.hour
     
     # Filter dataframe on user input
     if month != 'All':
@@ -129,16 +130,16 @@ def station_stats(df):
 
     # display most commonly used start station
     popular_start_station = df['Start Station'].mode()[0]
-    print('Most Popular Start Station: ', popular_start_station,'\n')
+    print('The Most Popular Start Station: ', popular_start_station,'\n')
 
     # display most commonly used end station
     popular_end_station = df['End Station'].mode()[0]
-    print('Most Popular End Station: ', popular_end_station,'\n')
+    print('The Most Popular End Station: ', popular_end_station,'\n')
 
     # display most frequent combination of start station and end station trip
     df['Station Combination'] = 'Start Station: ' + df['Start Station'] +'\n End Station: '+ df['End Station']
     popular_station_combination = df['Station Combination'].mode()[0]
-    print('Most Popular Start And End Station Combination:\n', popular_station_combination)
+    print('The Most Popular Start And End Station Combination:\n', popular_station_combination)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)

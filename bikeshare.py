@@ -65,11 +65,11 @@ def filter_data(raw_df,month,day):
     """Filters the data based on user input and adds 'Hour' column to dataframe.
     
     Args:
-        (df) Pandas Dataframe raw_df - dataframe with data of the city that was asked for by the user
+        (dataframe) Pandas Dataframe raw_df - dataframe with data of the city that was asked for by the user
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     Returns:
-        df - Pandas DataFrame containing city data filtered by month and day
+        dataframe - Pandas DataFrame containing city data filtered by month and day
         """
     
     # Create copy of raw dataframe
